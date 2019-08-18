@@ -4,6 +4,9 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
 
+// import routes
+const userRoutes = require("./routes/user");
+
 // app
 const app = express();
 
@@ -15,20 +18,19 @@ mongoose
 mongoose.connection.on("error", err => {
   console.log(`DB connection error: ${err.message}`);
 });
-// mongoose
-//   .connect(process.env.DATABASE, {
-//     useNewUrlParser: true,
-//     useCreateIndex: true
-//   })
-//   .then(() => console.log("DB Connected"));
 
-// routes
-app.get("/", (req, res) => {
-  res.send("hello from node");
-});
+// routes middleware
+app.use("/api", userRoutes);
 
 const port = process.env.PORT || 8000;
 
 app.listen(port, () => {
   console.log("Server is running");
 });
+
+// mongoose
+//   .connect(process.env.DATABASE, {
+//     useNewUrlParser: true,
+//     useCreateIndex: true
+//   })
+//   .then(() => console.log("DB Connected"));
