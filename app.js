@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
+// const expressValidator = require("express-validator");
 dotenv.config();
 
 // import routes
@@ -25,6 +26,7 @@ mongoose.connection.on("error", err => {
 app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(cookieParser());
+// app.use(expressValidator());
 
 // routes middleware
 app.use("/api", userRoutes);
