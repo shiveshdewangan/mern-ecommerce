@@ -24,16 +24,14 @@ const userSchema = new mongoose.Schema(
       type: String,
       trim: true
     },
-    salt: {
-      type: String,
-      role: {
-        type: Number,
-        default: 0
-      },
-      history: {
-        type: Array,
-        default: []
-      }
+    salt: String,
+    role: {
+      type: Number,
+      default: 0
+    },
+    history: {
+      type: Array,
+      default: []
     }
   },
   { timestamps: true }
